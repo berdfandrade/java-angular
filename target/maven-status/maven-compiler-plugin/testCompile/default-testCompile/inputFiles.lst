@@ -1,0 +1,5 @@
+/home/bernardo/demo/src/test/java/com/example/demo/security/JwtSeviceTest.java
+/home/bernardo/demo/src/test/java/com/example/demo/infra/DatabaseConnectionTest.java
+/home/bernardo/demo/src/test/java/com/example/demo/service/UserService.java
+/home/bernardo/demo/src/test/java/com/example/demo/controller/UserControllerTest.java
+/home/bernardo/demo/src/test/java/com/example/demo/security/config/UserDetailsServiceImplTest.java
