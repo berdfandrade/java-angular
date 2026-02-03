@@ -15,5 +15,6 @@
 /home/bernardo/demo/src/main/java/com/example/demo/domain/Role.java
 /home/bernardo/demo/src/main/java/com/example/demo/service/UserDetailsService.java
 /home/bernardo/demo/src/main/java/com/example/demo/service/AuthService.java
+/home/bernardo/demo/src/main/java/com/example/demo/controller/HelloController.java
 /home/bernardo/demo/src/main/java/com/example/demo/exception/UserNotFoundException.java
 /home/bernardo/demo/src/main/java/com/example/demo/controller/AuthController.java

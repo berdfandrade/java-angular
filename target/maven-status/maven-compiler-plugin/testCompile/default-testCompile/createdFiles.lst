@@ -1,5 +1,2 @@
-com/example/demo/controller/UserControllerTest.class
-com/example/demo/service/UserServiceTest.class
-com/example/demo/security/JwtServiceTest.class
 com/example/demo/security/config/UserDetailsServiceImplTest.class
-com/example/demo/infra/DatabaseConnectionTest.class
+com/example/demo/controller/UserControllerTest.class
