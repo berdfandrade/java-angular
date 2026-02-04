@@ -21,11 +21,4 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/users")
-    public User createUser(@Valid @RequestBody CreateUserDTO dto) {
-        return userService.createUser(
-                dto.getUsername(),
-                dto.getEmail(),
-                dto.getPassword());
-    }
 }
