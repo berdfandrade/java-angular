@@ -44,10 +44,8 @@ class UserDetailsServiceImplTest {
                 when(userRepository.findByEmail("bernardo@email.com"))
                                 .thenReturn(Optional.of(user));
 
-                // act
                 UserDetails userDetails = userDetailsService.loadUserByUsername("bernardo@email.com");
 
-                // assert
                 assertThat(userDetails.getUsername()).isEqualTo("bernardo@email.com");
                 assertThat(userDetails.getPassword()).isEqualTo("senha-hash");
                 assertThat(userDetails.getAuthorities())
