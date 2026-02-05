@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GlobalExceptionHandlerTest {
 
+    @SuppressWarnings("null")
     @Test
     void shouldReturn500ForGenericException() {
         GlobalExceptionHandler handler = new GlobalExceptionHandler();

@@ -57,11 +57,9 @@ class UserDetailsServiceImplTest {
 
         @Test
         void shouldThrowExceptionWhenUserNotFound() {
-                // arrange
+
                 when(userRepository.findByEmail("inexistente@email.com"))
                                 .thenReturn(Optional.empty());
-
-                // act + assert
                 assertThatThrownBy(() -> userDetailsService.loadUserByUsername("inexistente@email.com"))
                                 .isInstanceOf(UsernameNotFoundException.class)
                                 .hasMessage("Usuário não encontrado");
