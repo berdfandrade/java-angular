@@ -1,1 +1,9 @@
+com/example/demo/infra/exception/handler/AuthExceptionHandlerTest.class
+com/example/demo/infra/exception/handler/GlobalExceptionHandlerTest.class
+com/example/demo/infra/config/DataInitializerConfigTest.class
+com/example/demo/security/config/UserDetailsServiceImplTest.class
+com/example/demo/controller/AuthControllerTest.class
+com/example/demo/security/config/TestSecurityConfig.class
 com/example/demo/service/UserServiceTest.class
+com/example/demo/security/JwtServiceTest.class
+com/example/demo/infra/DatabaseConnectionTest.class

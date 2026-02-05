@@ -1,23 +1,29 @@
 package com.example.demo.domain;
 
+import com.example.demo.domain.enums.RoleName;
+
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import jakarta.persistence.Enumerated;
 
 @Entity
 @Table(name = "roles")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
 
-    public Role() {
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(unique = true, nullable = false)
+    private RoleName name;
 
-    public Role(String name) {
+    public Role(RoleName name) {
         this.name = name;
     }
-
 }

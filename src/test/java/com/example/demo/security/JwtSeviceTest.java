@@ -3,7 +3,7 @@ package com.example.demo.security;
 import io.jsonwebtoken.Claims;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import com.example.demo.domain.enums.RoleName;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JwtServiceTest {
@@ -20,14 +20,15 @@ class JwtServiceTest {
     @Test
     void testGenerateAndParseToken() {
         String username = "bernardo";
-        String role = "ADMIN";
+        RoleName role = RoleName.ROLE_ADMIN; // agora é enum
 
+        // converter enum para String na hora de gerar token
         String token = jwtService.generateToken(username, role);
         assertNotNull(token, "O token não pode ser nulo");
 
         Claims claims = jwtService.parseToken(token);
         assertEquals(username, claims.getSubject(), "O username deve ser igual");
-        assertEquals(role, claims.get("role"), "A role deve ser igual");
+        assertEquals(role.name(), claims.get("role"), "A role deve ser igual"); // compara String
 
         assertTrue(claims.getExpiration().getTime() > System.currentTimeMillis(),
                 "A data de expiração deve ser no futuro");
@@ -35,9 +36,8 @@ class JwtServiceTest {
 
     @Test
     void testTokenExpiration() throws InterruptedException {
-        // token de 1 segundo
         JwtService shortLivedJwt = new JwtService(secret, 1000);
-        String token = shortLivedJwt.generateToken("user", "USER");
+        String token = shortLivedJwt.generateToken("user", RoleName.ROLE_USER);
 
         Thread.sleep(1500);
 

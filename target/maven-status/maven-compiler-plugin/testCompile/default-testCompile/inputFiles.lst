@@ -1,5 +1,6 @@
 /home/bernardo/java-angular/demo/src/test/java/com/example/demo/infra/exception/handler/GlobalExceptionHandlerTest.java
 /home/bernardo/java-angular/demo/src/test/java/com/example/demo/security/config/TestSecurityConfig.java
+/home/bernardo/java-angular/demo/src/test/java/com/example/demo/infra/config/DataInitializerConfigTest.java
 /home/bernardo/java-angular/demo/src/test/java/com/example/demo/infra/exception/handler/AuthExceptionHandlerTest.java
 /home/bernardo/java-angular/demo/src/test/java/com/example/demo/service/UserService.java
 /home/bernardo/java-angular/demo/src/test/java/com/example/demo/controller/AuthControllerTest.java

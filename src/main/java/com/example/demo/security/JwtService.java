@@ -5,6 +5,8 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.domain.enums.RoleName;
+
 import javax.crypto.SecretKey;
 import java.util.Date;
 
@@ -24,7 +26,7 @@ public class JwtService {
         this.expiration = expiration;
     }
 
-    public String generateToken(String username, String role) {
+    public String generateToken(String username, RoleName role) {
         return Jwts.builder()
                 .setSubject(username)
                 .claim("role", role)
