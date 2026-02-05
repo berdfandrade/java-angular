@@ -26,13 +26,9 @@ class GlobalExceptionHandlerTest {
     void shouldReturn404ForUserNotFound() {
 
         GlobalExceptionHandler handler = new GlobalExceptionHandler();
-
         RuntimeException ex = new UserNotFoundException("john@example.com");
-
         ResponseEntity<?> response = handler.handleNotFound(ex);
-
         Map<?, ?> body = (Map<?, ?>) response.getBody();
-
         assertEquals(
                 "Usuário não encontrado com email: john@example.com",
                 body.get("error"));
@@ -42,13 +38,9 @@ class GlobalExceptionHandlerTest {
     void shouldReturn409ForEmailAlreadyExists() {
 
         GlobalExceptionHandler handler = new GlobalExceptionHandler();
-
         RuntimeException ex = new EmailAlreadyExistsException("Email já existe");
-
         ResponseEntity<?> response = handler.handleConflict(ex);
-
         assertEquals(409, response.getStatusCode().value());
-
         Map<?, ?> body = (Map<?, ?>) response.getBody();
         assertEquals("Email já existe", body.get("error"));
     }
@@ -57,13 +49,9 @@ class GlobalExceptionHandlerTest {
     void shouldReturn400ForIllegalArgument() {
 
         GlobalExceptionHandler handler = new GlobalExceptionHandler();
-
         RuntimeException ex = new IllegalArgumentException("input inválido");
-
         ResponseEntity<?> response = handler.handleBadRequest(ex);
-
         assertEquals(400, response.getStatusCode().value());
-
         Map<?, ?> body = (Map<?, ?>) response.getBody();
         assertEquals("input inválido", body.get("error"));
     }
