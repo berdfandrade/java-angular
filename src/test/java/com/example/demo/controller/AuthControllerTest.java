@@ -4,6 +4,8 @@ import com.example.demo.domain.User;
 import com.example.demo.dto.auth.AuthResponse;
 import com.example.demo.dto.auth.LoginRequest;
 import com.example.demo.dto.user.CreateUserDTO;
+import com.example.demo.infra.exception.handler.AuthExceptionHandler;
+import com.example.demo.infra.exception.handler.GlobalExceptionHandler;
 import com.example.demo.security.config.TestSecurityConfig;
 import com.example.demo.service.AuthService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,7 +24,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ActiveProfiles("test")
-@Import(TestSecurityConfig.class)
+@Import({
+        TestSecurityConfig.class,
+        AuthExceptionHandler.class,
+        GlobalExceptionHandler.class
+})
 @WebMvcTest(AuthController.class)
 class AuthControllerTest {
 
@@ -54,6 +60,7 @@ class AuthControllerTest {
         createdUser.setEmail(createUserDTO.getEmail());
     }
 
+    @SuppressWarnings("null")
     @Test
     void testLogin() throws Exception {
         Mockito.when(authService.login(any(LoginRequest.class))).thenReturn(authResponse);
@@ -65,6 +72,7 @@ class AuthControllerTest {
                 .andExpect(jsonPath("$.token").value("fake-jwt-token"));
     }
 
+    @SuppressWarnings("null")
     @Test
     void testRegister() throws Exception {
         Mockito.when(authService.register(any(CreateUserDTO.class))).thenReturn(createdUser);
@@ -78,6 +86,7 @@ class AuthControllerTest {
                 .andExpect(jsonPath("$.email").value("newuser@example.com"));
     }
 
+    @SuppressWarnings("null")
     @Test
     void testRegisterValidationError() throws Exception {
         // Cria DTO inválido (campos vazios)

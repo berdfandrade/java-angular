@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.User;
-import com.example.demo.dto.user.CreateUserDTO; // <--- IMPORT CORRETO
+import com.example.demo.dto.user.CreateUserDTO;
+import com.example.demo.infra.exception.auth.EmailAlreadyExistsException;
 import com.example.demo.dto.auth.AuthResponse;
 import com.example.demo.dto.auth.LoginRequest;
 import com.example.demo.repository.UserRepository;
@@ -37,7 +38,7 @@ public class AuthService {
 
     public User register(CreateUserDTO dto) {
         if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
-            throw new RuntimeException("Email já registrado");
+            throw new EmailAlreadyExistsException("Email já registrado");
         }
 
         User user = new User();
