@@ -4,6 +4,7 @@
 /home/bernardo/java-angular/demo/src/main/java/com/example/demo/infra/exception/auth/InvalidCredentialsException.java
 /home/bernardo/java-angular/demo/src/main/java/com/example/demo/domain/User.java
 /home/bernardo/java-angular/demo/src/main/java/com/example/demo/security/UserDetailsServiceImpl.java
+/home/bernardo/java-angular/demo/src/main/java/com/example/demo/infra/exception/auth/EmailNotFoundException.java
 /home/bernardo/java-angular/demo/src/main/java/com/example/demo/security/JwtService.java
 /home/bernardo/java-angular/demo/src/main/java/com/example/demo/repository/UserRepository.java
 /home/bernardo/java-angular/demo/src/main/java/com/example/demo/security/handler/JwtAuthenticationEntryPoint.java

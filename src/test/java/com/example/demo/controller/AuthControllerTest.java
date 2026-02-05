@@ -60,7 +60,6 @@ class AuthControllerTest {
         createdUser.setEmail(createUserDTO.getEmail());
     }
 
-    @SuppressWarnings("null")
     @Test
     void testLogin() throws Exception {
         Mockito.when(authService.login(any(LoginRequest.class))).thenReturn(authResponse);
@@ -72,7 +71,6 @@ class AuthControllerTest {
                 .andExpect(jsonPath("$.token").value("fake-jwt-token"));
     }
 
-    @SuppressWarnings("null")
     @Test
     void testRegister() throws Exception {
         Mockito.when(authService.register(any(CreateUserDTO.class))).thenReturn(createdUser);
@@ -86,7 +84,6 @@ class AuthControllerTest {
                 .andExpect(jsonPath("$.email").value("newuser@example.com"));
     }
 
-    @SuppressWarnings("null")
     @Test
     void testRegisterValidationError() throws Exception {
         // Cria DTO inválido (campos vazios)

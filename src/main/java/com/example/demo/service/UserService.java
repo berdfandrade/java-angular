@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.User;
+import com.example.demo.infra.exception.auth.EmailNotFoundException;
 import com.example.demo.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,4 +35,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new EmailNotFoundException(
+                        "E-mail não encontrado"));
+    }
 }

@@ -8,6 +8,7 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import com.example.demo.infra.exception.auth.EmailNotFoundException;
 import static org.mockito.Mockito.*;
 
 class UserServiceTest {
@@ -24,7 +25,6 @@ class UserServiceTest {
     @Test
     void createUser_shoudSaveUserWithHashedPassword() {
 
-        // Arrage
         String username = "john_doe";
         String email = "john_doe@example.com";
         String rawPassword = "123456789";
@@ -35,8 +35,6 @@ class UserServiceTest {
 
         User createdUser = userService.createUser(username, email, rawPassword);
 
-        // Assert
-        // Captura o usuário que foi passado para o save
         ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
         verify(userRepository).save(userCaptor.capture());
         User savedUser = userCaptor.getValue();
@@ -49,4 +47,36 @@ class UserServiceTest {
 
         assertEquals(savedUser, createdUser);
     }
+
+    @Test
+    void getUserByEmail_shouldReturnUser_whenEmailExists() {
+
+        String email = "john@example.com";
+        User user = new User();
+        user.setEmail(email);
+
+        when(userRepository.findByEmail(email))
+                .thenReturn(java.util.Optional.of(user));
+
+        User result = userService.getUserByEmail(email);
+
+        assertEquals(email, result.getEmail());
+        verify(userRepository).findByEmail(email);
+    }
+
+    @Test
+    void getUserByEmail_shouldThrowException_whenEmailNotFound() {
+
+        String email = "ghost@example.com";
+
+        when(userRepository.findByEmail(email))
+                .thenReturn(java.util.Optional.empty());
+
+        assertThrows(
+                EmailNotFoundException.class,
+                () -> userService.getUserByEmail(email));
+
+        verify(userRepository).findByEmail(email);
+    }
+
 }
